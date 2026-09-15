@@ -5,8 +5,8 @@ const db = firebase.database();
 // Firebase console → Authentication → Users табаас хоёулаа бүртгүүлсний
 // дараа UID-гаа хуулж аваад доор тавь.
 const ALLOWED_UIDS = [
-  "PUT_USER_1_UID_HERE",
-  "PUT_USER_2_UID_HERE"
+  "JmuGNBO5pQMkD9AM8S4M67NNLyq2",
+  "m9xBmS3YzueFZI29aptgpjtkA6M2"
 ];
 
 // Хоёулаа ижил "өрөө"-нд бичиж байгаа эсэхийг баталгаажуулах түлхүүр.
@@ -89,5 +89,4 @@ function appendMessage(msg) {
   bubble.appendChild(metaEl);
 
   messagesEl.appendChild(bubble);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
-}
+  messagesEl.scrollTop =
