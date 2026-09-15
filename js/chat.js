@@ -2,15 +2,11 @@ const auth = firebase.auth();
 const db = firebase.database();
 
 // ⚠️ Зөвхөн эдгээр 2 UID-тай хэрэглэгч л чатыг ашиглана.
-// Firebase console → Authentication → Users табаас хоёулаа бүртгүүлсний
-// дараа UID-гаа хуулж аваад доор тавь.
 const ALLOWED_UIDS = [
   "JmuGNBO5pQMkD9AM8S4M67NNLyq2",
   "m9xBmS3YzueFZI29aptgpjtkA6M2"
 ];
 
-// Хоёулаа ижил "өрөө"-нд бичиж байгаа эсэхийг баталгаажуулах түлхүүр.
-// Хүсвэл нэрийг өөрчилж болно — гол нь index.html/chat.js хоёулаа адилхан байх ёстой.
 const ROOM_ID = "us";
 const messagesRef = db.ref("rooms/" + ROOM_ID + "/messages");
 
@@ -21,7 +17,6 @@ const whoAmI = document.getElementById("who-am-i");
 
 let currentUser = null;
 
-// --- Нэвтрээгүй бол login хуудас руу буцаана; зөвшөөрөгдөөгүй хэрэглэгчийг гаргана ---
 auth.onAuthStateChanged((user) => {
   if (!user) {
     window.location.href = "index.html";
@@ -41,12 +36,10 @@ auth.onAuthStateChanged((user) => {
   listenForMessages();
 });
 
-// --- Гарах товч ---
 document.getElementById("signout-btn").addEventListener("click", () => {
   auth.signOut().then(() => { window.location.href = "index.html"; });
 });
 
-// --- Мессеж илгээх ---
 function sendMessage() {
   const text = input.value.trim();
   if (!text || !currentUser) return;
@@ -66,7 +59,6 @@ input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") sendMessage();
 });
 
-// --- Шинэ мессеж ирэх бүрт дэлгэцэнд нэмнэ ---
 function listenForMessages() {
   messagesRef.limitToLast(200).on("child_added", (snapshot) => {
     const msg = snapshot.val();
@@ -89,4 +81,5 @@ function appendMessage(msg) {
   bubble.appendChild(metaEl);
 
   messagesEl.appendChild(bubble);
-  messagesEl.scrollTop =
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
