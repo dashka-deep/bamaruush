@@ -1,6 +1,14 @@
 const auth = firebase.auth();
 const db = firebase.database();
 
+// ⚠️ Зөвхөн эдгээр 2 UID-тай хэрэглэгч л чатыг ашиглана.
+// Firebase console → Authentication → Users табаас хоёулаа бүртгүүлсний
+// дараа UID-гаа хуулж аваад доор тавь.
+const ALLOWED_UIDS = [
+  "PUT_USER_1_UID_HERE",
+  "PUT_USER_2_UID_HERE"
+];
+
 // Хоёулаа ижил "өрөө"-нд бичиж байгаа эсэхийг баталгаажуулах түлхүүр.
 // Хүсвэл нэрийг өөрчилж болно — гол нь index.html/chat.js хоёулаа адилхан байх ёстой.
 const ROOM_ID = "us";
@@ -13,12 +21,21 @@ const whoAmI = document.getElementById("who-am-i");
 
 let currentUser = null;
 
-// --- Нэвтрээгүй бол login хуудас руу буцаана ---
+// --- Нэвтрээгүй бол login хуудас руу буцаана; зөвшөөрөгдөөгүй хэрэглэгчийг гаргана ---
 auth.onAuthStateChanged((user) => {
   if (!user) {
     window.location.href = "index.html";
     return;
   }
+
+  if (!ALLOWED_UIDS.includes(user.uid)) {
+    auth.signOut().then(() => {
+      alert("Уучлаарай, энэ чат зөвхөн 2 тодорхой хэрэглэгчид зориулагдсан.");
+      window.location.href = "index.html";
+    });
+    return;
+  }
+
   currentUser = user;
   whoAmI.textContent = (user.displayName || user.email) + " ❤";
   listenForMessages();
