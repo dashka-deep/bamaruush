@@ -26,8 +26,8 @@ html, body {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(120% 90% at 50% 0%, rgba(255, 111, 97, 0.35), transparent 60%),
-    linear-gradient(180deg, var(--dusk-2) 0%, var(--dusk-1) 65%, #0f0a1c 100%);
+    linear-gradient(180deg, rgba(28, 17, 48, 0.55) 0%, rgba(15, 10, 28, 0.75) 60%, rgba(10, 6, 18, 0.9) 100%),
+    url("../bg.jpg") center/cover no-repeat fixed;
   display: flex;
   flex-direction: column;
 }
