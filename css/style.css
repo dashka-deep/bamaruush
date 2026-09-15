@@ -27,7 +27,7 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(180deg, rgba(28, 17, 48, 0.55) 0%, rgba(15, 10, 28, 0.75) 60%, rgba(10, 6, 18, 0.9) 100%),
-    url("../assets/bg.jpg") center/cover no-repeat fixed;
+    url("../bg.jpg") center/cover no-repeat fixed;
   display: flex;
   flex-direction: column;
 }
