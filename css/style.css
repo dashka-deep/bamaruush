@@ -24,9 +24,12 @@ html, body {
 }
 
 body {
+  min-height: 100vh;
   background:
-    linear-gradient(180deg, rgba(28,17,48,.45), rgba(15,10,28,.75)),
+    linear-gradient(180deg, rgba(28, 17, 48, 0.55) 0%, rgba(15, 10, 28, 0.75) 60%, rgba(10, 6, 18, 0.9) 100%),
     url("../assets/bg.jpg") center/cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---------- Top bar ---------- */
