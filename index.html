@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-name">❤ Our Chat</div>
+      <div class="brand-tag">Just you &amp; me ❤</div>
+    </div>
+    <div class="status-pill"><span class="status-dot"></span> Online</div>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-heart">❤</div>
+
+      <!-- LOGIN FORM -->
+      <div id="login-view">
+        <h1 class="auth-title">Welcome back ❤</h1>
+        <p class="auth-sub">Same sky, different place,<br />but always you and me.</p>
+
+        <div class="field">
+          <label for="login-email">Имэйл</label>
+          <input id="login-email" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="login-pass">Нууц үг</label>
+          <input id="login-pass" type="password" placeholder="••••••••" />
+        </div>
+
+        <button class="btn btn-primary" id="login-btn">Login →</button>
+        <p class="error-text" id="login-error"></p>
+
+        <p class="switch-line">
+          Бүртгэлгүй юу? <button id="show-signup">Sign Up</button>
+        </p>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <div id="signup-view" class="hidden">
+        <h1 class="auth-title">Тавтай морил ❤</h1>
+        <p class="auth-sub">Шинэ бүртгэл үүсгээд<br />чатаа эхлүүлцгээе.</p>
+
+        <div class="field">
+          <label for="signup-name">Нэр</label>
+          <input id="signup-name" type="text" placeholder="Таны нэр" />
+        </div>
+        <div class="field">
+          <label for="signup-email">Имэйл</label>
+          <input id="signup-email" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="signup-pass">Нууц үг</label>
+          <input id="signup-pass" type="password" placeholder="6+ тэмдэгт" />
+        </div>
+
+        <button class="btn btn-primary" id="signup-btn">Sign Up →</button>
+        <p class="error-text" id="signup-error"></p>
+
+        <p class="switch-line">
+          Бүртгэлтэй юу? <button id="show-login">Login</button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Firebase SDK (compat build — энгийн script tag-аар ажиллана) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
